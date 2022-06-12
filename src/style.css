@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'RobotoFont';
+    src: url('./fonts/Roboto-Regular.ttf') format('ttf'),
+    url('./fonts/Roboto-Black.ttf') format('ttf'),
+    url('./fonts/Roboto-BlackItalic.ttf') format('ttf');
+    font-weight: 600;
+    font-style: normal;
+  
+  }
+
+
+.hello {
+    color: red;
+    font-family: 'RobotoFont';
+    /* background: url('./test.jpg'); */
+  }
