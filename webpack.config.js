@@ -2,13 +2,20 @@ const path = require("path");
 // const toml = require("toml");
 // const yaml = require("yamljs");
 // const json5 = require("json5");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: { index: "./src/index.js", print: "./src/print.js" },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Output Management",
+    }),
+  ],
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
+    clean: true,
   },
   // module: {
   //   rules: [
