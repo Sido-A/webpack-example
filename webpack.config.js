@@ -7,13 +7,19 @@ const webpack = require("webpack");
 
 module.exports = {
   mode: "development",
+  // entry: {
+  //   app: "./src/index.js",
+  //   // Runtime code for hot module replacement
+  //   hot: "webpack/hot/dev-server.js",
+  //   // Dev server client for web socket transport, hot and live reload logic
+  //   client: "webpack-dev-server/client/index.js?hot=true&live-reload=true",
+  // },
+
   entry: {
-    app: "./src/index.js",
-    // Runtime code for hot module replacement
-    hot: "webpack/hot/dev-server.js",
-    // Dev server client for web socket transport, hot and live reload logic
-    client: "webpack-dev-server/client/index.js?hot=true&live-reload=true",
+    index: "./src/index.js",
+    another: "./src/another-module.js",
   },
+
   devtool: "inline-source-map",
   devServer: {
     static: "./dist",
@@ -34,51 +40,52 @@ module.exports = {
     clean: true,
   },
   optimization: {
-    runtimeChunk: "single",
+    // runtimeChunk: "single",
+    splitChunks: { chunks: "all" },
   },
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /\.css$/i,
-  //       use: ["style-loader", "css-loader"],
-  //     },
-  //     {
-  //       test: /\.(png|svg|jpg|jpeg|gif)$/i,
-  //       type: "asset/resource",
-  //     },
-  //     {
-  //       test: /\.(woff|woff2|eot|ttf|otf)$/i,
-  //       type: "asset/resource",
-  //     },
-  //     {
-  //       test: /\.(csv|tsv)$/i,
-  //       use: ["csv-loader"],
-  //     },
-  //     {
-  //       test: /\.xml$/i,
-  //       use: ["xml-loader"],
-  //     },
-  //     {
-  //       test: /\.toml$/i,
-  //       type: "json",
-  //       parser: {
-  //         parse: toml.parse,
-  //       },
-  //     },
-  //     {
-  //       test: /\.yaml$/i,
-  //       type: "json",
-  //       parser: {
-  //         parse: yaml.parse,
-  //       },
-  //     },
-  //     {
-  //       test: /\.json5$/i,
-  //       type: "json",
-  //       parser: {
-  //         parse: json5.parse,
-  //       },
-  //     },
-  //   ],
-  // },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      //     {
+      //       test: /\.(png|svg|jpg|jpeg|gif)$/i,
+      //       type: "asset/resource",
+      //     },
+      //     {
+      //       test: /\.(woff|woff2|eot|ttf|otf)$/i,
+      //       type: "asset/resource",
+      //     },
+      //     {
+      //       test: /\.(csv|tsv)$/i,
+      //       use: ["csv-loader"],
+      //     },
+      //     {
+      //       test: /\.xml$/i,
+      //       use: ["xml-loader"],
+      //     },
+      //     {
+      //       test: /\.toml$/i,
+      //       type: "json",
+      //       parser: {
+      //         parse: toml.parse,
+      //       },
+      //     },
+      //     {
+      //       test: /\.yaml$/i,
+      //       type: "json",
+      //       parser: {
+      //         parse: yaml.parse,
+      //       },
+      //     },
+      //     {
+      //       test: /\.json5$/i,
+      //       type: "json",
+      //       parser: {
+      //         parse: json5.parse,
+      //       },
+      //     },
+    ],
+  },
 };
